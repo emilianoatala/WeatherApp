@@ -7,7 +7,7 @@ const Header = () => {
         <div className="main-box">
             <div className="box-img">
                 <img src={logo} alt="Logo"></img>
-                <h5>WeatherApp</h5>
+                <h5 className="valign-wrapper">WeatherApp</h5>
             </div>
         </div>
      );
