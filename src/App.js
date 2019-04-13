@@ -9,45 +9,66 @@ import 'materialize-css/dist/js/materialize.min.js';
 
 class App extends Component {
   state={
-    ciudad:"",
-    data:{},
-    error:"",
+    ciudadBuscada:"",
+    coordenada:{},
+    dataClima:{},
+    error:true,
   }
 
+
+
+
   componentDidUpdate(prevProps, prevState){
-    if(prevState.ciudad !== this.state.ciudad){
+    if(prevState.coordenada !== this.state.coordenada){
       this.consultarClima()
     }
   }
 
-  datosInput= ciudad=>{
-    if(ciudad===''){
+  datosInput= datos=>{
+    if(datos===''){
       this.setState({error:true})
     }
     else{
       this.setState({
-        ciudad:ciudad,
+        coordenada:datos.coordenada,
+        ciudadBuscada:datos.nombre,
         error:false
       })
     } 
   }
 
 
-consultarClima=()=>{
-  const ciudad=this.state.ciudad
-
+consultarClima=()=>{ 
+  const {lat,lng} = this.state.coordenada
   const key='ca147896cad69f2c6e786ee7177c9882'
-  const url=`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${key}`
+  const url=`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${key}`
 
   fetch(url)
   .then(response=>{
     return response.json()
   }).then(data=>{
     this.setState({
-      data:data,
+      dataClima:data,
       error:false})
+  }).catch(error=>{
+    this.setState({error:true})
   })
-  
+}
+
+mostrarTarjetaClima=()=>{
+  if(this.state.error){
+    return (
+      <div className="container">
+        No hay Datos para mostrar
+      </div>
+    )
+  }
+  else{
+    return(
+      <TarjetaClima data={this.state.dataClima} ciudad={this.state.ciudadBuscada}></TarjetaClima>
+    )
+  }
+
 }
 
   render() {
@@ -55,7 +76,7 @@ consultarClima=()=>{
       <div className="App">
         <Header></Header>
         <Buscador datosInput={this.datosInput}></Buscador>
-        <TarjetaClima data={this.state.data}></TarjetaClima>
+        {this.mostrarTarjetaClima()}
       </div>
     );
   }

@@ -8,7 +8,7 @@ class Temperatura extends Component {
     }
     
     componentWillMount(){
-        this.setState({checked:true})
+        this.setState({checked:false})
     
     }
 
@@ -33,14 +33,13 @@ class Temperatura extends Component {
     render() { 
         return ( 
             <div className="temperatura-main-box"  >
-                <h2 className="temperatura-city">{this.props.ciudad}</h2>
+                <h2 className="temperatura-city"> {this.props.ciudadInput} <br/> <font size="5"> ( {this.props.ciudadAPI} )  </font> </h2>
                 <h2 className="temperatura-value" >{this.cambiarUnidad()}</h2>
                 <div className="switch">
                     <label>
-                        Kelvin
                         <input type="checkbox" onChange={this.check}/>
                         <span className="lever"></span>
-                        Celcius
+                        Kelvin
                     </label>
                 </div>
                 <h5 className="temperatura-ambiente">{this.props.ambiente}</h5>

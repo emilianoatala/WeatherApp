@@ -5,19 +5,31 @@ class Buscador extends Component {
     
     cityRef=React.createRef()
 
+    componentDidMount() {
+        let autocompletador = new window.google.maps.places.Autocomplete(document.getElementById("inputCiudad"));
+    }
+
+
     obtenerDatos=(e)=>{
         e.preventDefault();    
         const ciudad= this.cityRef.current.value
-        this.props.datosInput(ciudad)
+        let self = this
+        const geocodificador = new window.google.maps.Geocoder()
+        geocodificador.geocode({address: ciudad}, function(results, status){
+            if (status === window.google.maps.GeocoderStatus.OK) {
+                let coordenada = results[0].geometry.location
+                let datos={coordenada:{lat:coordenada.lat(), lng:coordenada.lng()}, nombre:ciudad}
+                self.props.datosInput(datos)  
+            }   
+        })
     }
-
     render() { 
         return ( 
             <div className="container" onSubmit={this.obtenerDatos}>
                 <form className="buscador-formulario">
                         <div className="input-field buscador-box-input">
                             <input ref={this.cityRef} id="inputCiudad" type="text"/>
-                            <label htmlFor="inputCiudad">Ciudad:</label>  
+                             
                         </div>   
                         <button className="btn-floating buscador-pulse pulse"><i className="material-icons">search</i></button>        
                 </form>

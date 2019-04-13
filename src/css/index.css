@@ -86,6 +86,7 @@ code {
 .temperatura-city{
   color:#000;
   font-size: 30px;
+  text-align: center
 }
 
 .temperatura-value, .temperatura-ambiente{
@@ -110,6 +111,8 @@ code {
 .switch{
   margin-top: 20px;
 }
+
+
 
 /*-------------------Mapa------------------- */
 

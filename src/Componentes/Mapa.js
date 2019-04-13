@@ -19,7 +19,13 @@ componentDidUpdate(){
             {
                 zoom:12,
                 center:{lat:lat, lng:lng}
-            })    
+            })  
+            
+        let marcador = new window.google.maps.Marker({
+            position: {lat:lat, lng:lng},
+            map: mapa ,
+            title: 'Hello World!'   });
+            marcador.setAnimation(window.google.maps.Animation.DROP)
     }
     
     render() { 
