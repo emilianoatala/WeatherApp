@@ -20,7 +20,7 @@ class App extends Component {
       this.consultarClima()
     }
   }
-
+  //Almacena en el State los datos de coordenadas obtenidos del componente hijo Buscador
   datosInput= datos=>{
     if (datos === false){
       this.setState({error:true})
@@ -33,7 +33,7 @@ class App extends Component {
       })
     } 
   }
-
+ //Realiza una consulta a la api del clima y la guarda en el State
   consultarClima=()=>{ 
     const {lat,lng} = this.state.coordenada
     const key='ca147896cad69f2c6e786ee7177c9882'
@@ -51,6 +51,7 @@ class App extends Component {
     })
   }
 
+  //muestra el panel de informacion del clima en caso de que se haya obtenido informacion de la api
   mostrarTarjetaClima=()=>{
     if(this.state.error){
       return (

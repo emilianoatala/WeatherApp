@@ -24,7 +24,8 @@ class Buscador extends Component {
             this.cityRef.current.placeholder="Introduce una Ubicación"
         }
     }
-
+    //obtiene los datos de Coordenadas geograficas mediante Geocoder, segun la ciudad buscada y la envia a su componente padre App
+    //para ser utilizada en la consulta a la api de clima
     obtenerDatos=(e)=>{
         e.preventDefault();    
         const ciudad= this.cityRef.current.value

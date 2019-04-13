@@ -4,7 +4,7 @@ import Mapa from './Mapa';
 
 class TarjetaClima extends Component {
    
-
+    //procesa datos obtenidos de la api de clima y devuelve un componente que muestra dichos datos
     mostrarTemperatura=()=>{
         let {name, weather, main}= this.props.data
         let ciudadInput= this.props.ciudad
@@ -25,6 +25,7 @@ class TarjetaClima extends Component {
         )
     }
 
+    //procesa datos obtenidos de la api de google maps y devuelve un componente que muestra el mapa segun coordenadas
     mostrarMapa=()=>{
         let coord= this.props.data.coord
         if(!coord){

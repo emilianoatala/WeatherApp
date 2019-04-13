@@ -11,12 +11,12 @@ class Temperatura extends Component {
         this.setState({checked:false})
     
     }
-    
+    //Verifica si el switch esta encendido o apagado
     check=()=>{
         this.setState({checked: !this.state.checked})  
         this.cambiarUnidad()    
     }
-
+    //modifica la unidad de temperatura segun lo seleccionado en el switch
     cambiarUnidad=()=>{
         let temperatura=this.props.temperatura
         if(this.state.checked){
