@@ -110,3 +110,10 @@ code {
 .switch{
   margin-top: 20px;
 }
+
+/*-------------------Mapa------------------- */
+
+.mapa-main-box{
+  width: 70%;
+  height: 100%;
+}

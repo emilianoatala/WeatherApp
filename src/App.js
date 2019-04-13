@@ -46,7 +46,6 @@ consultarClima=()=>{
     this.setState({
       data:data,
       error:false})
-      console.log(this.state.data)
   })
   
 }
