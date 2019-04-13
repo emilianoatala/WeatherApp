@@ -11,9 +11,7 @@ class Temperatura extends Component {
         this.setState({checked:false})
     
     }
-
-   
-
+    
     check=()=>{
         this.setState({checked: !this.state.checked})  
         this.cambiarUnidad()    

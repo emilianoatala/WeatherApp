@@ -60,11 +60,8 @@ class App extends Component {
       )
     }
     else{
-      return(
-        <TarjetaClima data={this.state.dataClima} ciudad={this.state.ciudadBuscada}></TarjetaClima>
-      )
+      return ( <TarjetaClima ref="tarjeta" data={this.state.dataClima} ciudad={this.state.ciudadBuscada}></TarjetaClima> )     
     }
-
   }
 
   render() {
