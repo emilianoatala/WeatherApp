@@ -7,11 +7,12 @@ class Temperatura extends Component {
         temperatura:""
     }
     
-    componentDidMount(){
-        let temperatura= this.props.temperatura
-        this.setState({checked:false, temperatura:temperatura+" K"})
-        
+    componentWillMount(){
+        this.setState({checked:true})
+    
     }
+
+   
 
     check=()=>{
         this.setState({checked: !this.state.checked})  
@@ -21,10 +22,10 @@ class Temperatura extends Component {
     cambiarUnidad=()=>{
         let temperatura=this.props.temperatura
         if(this.state.checked){
-            this.setState({temperatura: temperatura+" K"})
+            return temperatura+" K"
         }
         else{
-            this.setState({temperatura: (temperatura - 273.15).toFixed(1) + " ºC"})
+            return (temperatura - 273.15).toFixed(1) + " ºC"
         }
     }
 
@@ -33,7 +34,7 @@ class Temperatura extends Component {
         return ( 
             <div className="temperatura-main-box"  >
                 <h2 className="temperatura-city">{this.props.ciudad}</h2>
-                <h2 className="temperatura-value" >{this.state.temperatura}</h2>
+                <h2 className="temperatura-value" >{this.cambiarUnidad()}</h2>
                 <div className="switch">
                     <label>
                         Kelvin

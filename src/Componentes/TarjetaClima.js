@@ -4,8 +4,9 @@ import Mapa from './Mapa';
 
 class TarjetaClima extends Component {
    
+
     mostrarTemperatura=()=>{
-        const{name, weather, main}= this.props.data
+        let {name, weather, main}= this.props.data
         if(!name||!weather||!main){
             return null
         }
