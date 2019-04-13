@@ -16,11 +16,15 @@ class Buscador extends Component {
         let self = this
         const geocodificador = new window.google.maps.Geocoder()
         geocodificador.geocode({address: ciudad}, function(results, status){
+            console.log(status)
             if (status === window.google.maps.GeocoderStatus.OK) {
                 let coordenada = results[0].geometry.location
                 let datos={coordenada:{lat:coordenada.lat(), lng:coordenada.lng()}, nombre:ciudad}
                 self.props.datosInput(datos)  
-            }   
+            }else if (status=== window.google.maps.GeocoderStatus.ZERO_RESULTS){
+                let datos=false
+                self.props.datosInput(datos)
+            }  
         })
     }
     render() { 

@@ -15,9 +15,6 @@ class App extends Component {
     error:true,
   }
 
-
-
-
   componentDidUpdate(prevProps, prevState){
     if(prevState.coordenada !== this.state.coordenada){
       this.consultarClima()
@@ -25,7 +22,7 @@ class App extends Component {
   }
 
   datosInput= datos=>{
-    if(datos===''){
+    if (datos === false){
       this.setState({error:true})
     }
     else{
@@ -37,39 +34,38 @@ class App extends Component {
     } 
   }
 
+  consultarClima=()=>{ 
+    const {lat,lng} = this.state.coordenada
+    const key='ca147896cad69f2c6e786ee7177c9882'
+    const url=`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${key}`
 
-consultarClima=()=>{ 
-  const {lat,lng} = this.state.coordenada
-  const key='ca147896cad69f2c6e786ee7177c9882'
-  const url=`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${key}`
-
-  fetch(url)
-  .then(response=>{
-    return response.json()
-  }).then(data=>{
-    this.setState({
-      dataClima:data,
-      error:false})
-  }).catch(error=>{
-    this.setState({error:true})
-  })
-}
-
-mostrarTarjetaClima=()=>{
-  if(this.state.error){
-    return (
-      <div className="container">
-        No hay Datos para mostrar
-      </div>
-    )
-  }
-  else{
-    return(
-      <TarjetaClima data={this.state.dataClima} ciudad={this.state.ciudadBuscada}></TarjetaClima>
-    )
+    fetch(url)
+    .then(response=>{
+      return response.json()
+    }).then(data=>{
+      this.setState({
+        dataClima:data,
+        error:false})
+    }).catch(error=>{
+      this.setState({error:true})
+    })
   }
 
-}
+  mostrarTarjetaClima=()=>{
+    if(this.state.error){
+      return (
+        <div className="container">
+          No hay Datos para mostrar
+        </div>
+      )
+    }
+    else{
+      return(
+        <TarjetaClima data={this.state.dataClima} ciudad={this.state.ciudadBuscada}></TarjetaClima>
+      )
+    }
+
+  }
 
   render() {
     return (
