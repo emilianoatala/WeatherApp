@@ -67,7 +67,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <Header></Header>
         <Buscador datosInput={this.datosInput}></Buscador>
         {this.mostrarTarjetaClima()}
