@@ -24,7 +24,7 @@ componentDidUpdate(){
         let marcador = new window.google.maps.Marker({
             position: {lat:lat, lng:lng},
             map: mapa ,
-            title: 'Hello World!'   });
+            title: `Latitud: ${this.props.lat}, Longitud: ${this.props.lng}`});
             marcador.setAnimation(window.google.maps.Animation.DROP)
     }
     
