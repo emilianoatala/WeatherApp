@@ -19,9 +19,9 @@ class Buscador extends Component {
 
     componentDidUpdate(){
         if(this.state.error){
-            this.cityRef.current.placeholder="Hey! no escribiste ningun lugar!"
+            this.cityRef.current.placeholder="Hey! no escribiste ningun sitio para buscar!"
         }else{
-            this.cityRef.current.placeholder="Introduce una Ubicación"
+            this.cityRef.current.placeholder="Introduce una ubicación. Por ejemplo: San Martin de los Andes"
         }
     }
     //obtiene los datos de Coordenadas geograficas mediante Geocoder, segun la ciudad buscada y la envia a su componente padre App
