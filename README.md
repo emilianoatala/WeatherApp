@@ -2,6 +2,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+
+# IMPORTANT: 
+
+If you have any problem, or unexpected error about Google Maps API, try to reload the page. Else, you can tell me what`s the problem.
+
 In the project directory, you can run: 
 
 ### `npm install` 
